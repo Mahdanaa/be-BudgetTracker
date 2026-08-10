@@ -28,7 +28,7 @@ class UserService {
     const hash = await bcrypt.hash(data.password, this.SALT_ROUNDS);
 
     const user = await User.create({ ...data, password: hash });
-    const userJson = user.toJson();
+    const userJson = user.toJSON();
     delete userJson.password;
 
     return userJson;
@@ -61,7 +61,7 @@ class UserService {
       throw new ServerError('Gagal update user: ' + message.join(', '));
     }
 
-    const userJson = user.toJson();
+    const userJson = user.toJSON();
     delete userJson.password;
     return userJson;
   }
