@@ -6,6 +6,9 @@ const validateRequest = require('../../middlewares/validation.middleware');
 
 const asyncErrorHandler = require('../../errors/asyncErrorHandler');
 const { idParamValidator, updateUserValidator, createUserValidator } = require('./user.validator');
+const authJWT = require('../../middlewares/auth.middleware');
+
+router.use(authJWT);
 
 router.get('/', asyncErrorHandler(UserController.getAll.bind(UserController)));
 router.get('/:id', idParamValidator, validateRequest, asyncErrorHandler(UserController.getById.bind(UserController)));
