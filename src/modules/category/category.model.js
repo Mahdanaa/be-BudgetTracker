@@ -1,3 +1,5 @@
+const { underscoredIf } = require('sequelize/lib/utils');
+
 module.exports = (sequelize, DataTypes) => {
   const Category = sequelize.define(
     'Category',
@@ -29,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: 'categories',
       timestamps: true,
+      underscored: true,
     }
   );
 
